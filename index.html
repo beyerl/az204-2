@@ -16,9 +16,6 @@
 <li>
 <ul>
 <li></li>
-<li><a href="#subscriptions-and-keys">Subscriptions and Keys</a></li>
-<li><a href="#call-an-api-with-the-subscription-key">Call an API with the subscription key</a></li>
-<li><a href="#next-unit-secure-apis-by-using-certificates">Next unit: Secure APIs by using certificates</a></li>
 <li><a href="#secure-apis-by-using-certificates---training--microsoft-docs.md">Secure APIs by using certificates - Training  Microsoft Docs.md</a></li>
 <li><a href="#transport-layer-security-client-authentication">Transport Layer Security client authentication</a></li>
 <li><a href="#accepting-client-certificates-in-the-consumption-tier">Accepting client certificates in the Consumption tier</a></li>
@@ -130,12 +127,9 @@
   <div class="stackedit__right">
     <div class="stackedit__html">
       <h3 id="secure-apis-by-using-subscriptions">Secure APIs by using subscriptions</h3>
-<p>When you publish APIs through API Management, it’s easy and common to secure access to those APIs by using subscription keys. Developers who need to consume the published APIs must include a valid subscription key in HTTP requests when they make calls to those APIs. Otherwise, the calls are rejected immediately by the API Management gateway. They aren’t forwarded to the back-end services.</p>
-<p>To get a subscription key for accessing APIs, a subscription is required. A subscription is essentially a named container for a pair of subscription keys. Developers who need to consume the published APIs can get subscriptions. And they don’t need approval from API publishers. API publishers can also create subscriptions directly for API consumers.</p>
-<p>Note</p>
-<p>API Management also supports other mechanisms for securing access to APIs, including: OAuth2.0, Client certificates, and IP allow listing.</p>
-<h2 id="subscriptions-and-keys">Subscriptions and Keys</h2>
-<p>A subscription key is a unique auto-generated key that can be passed through in the headers of the client request or as a query string parameter. The key is directly related to a subscription, which can be scoped to different areas. Subscriptions give you granular control over permissions and policies.</p>
+<p>When you publish APIs through API Management, it’s easy and common to secure access to those APIs by using subscription keys. A subscription is essentially a named container for a pair of subscription keys.</p>
+<h4 id="subscriptions-and-keys">Subscriptions and Keys</h4>
+<p>A subscription key is a unique auto-generated key that can be passed through in the headers of the client request or as a query string parameter.</p>
 <p>The three main subscription scopes are:</p>
 
 <table>
@@ -156,16 +150,14 @@
 </tr>
 <tr>
 <td>Product</td>
-<td>A product is a collection of one or more APIs that you configure in API Management. You can assign APIs to more than one product. Products can have different access rules, usage quotas, and terms of use.</td>
+<td>A product is a collection of one or more APIs that you configure in API Management. You can assign APIs to more than one product.</td>
 </tr>
 </tbody>
-</table><p>Applications that call a protected API must include the key in every request.</p>
-<p>You can regenerate these subscription keys at any time, for example, if you suspect that a key has been shared with unauthorized users.</p>
-<p><img src="https://docs.microsoft.com/en-us/training/wwl-azure/explore-api-management/media/subscription-keys.png" alt="Image showing the Subscriptions screen."></p>
-<p>Every subscription has two keys, a primary and a secondary. Having two keys makes it easier when you do need to regenerate a key. For example, if you want to change the primary key and avoid downtime, use the secondary key in your apps.</p>
-<p>For products where subscriptions are enabled, clients must supply a key when making calls to APIs in that product. Developers can obtain a key by submitting a subscription request. If you approve the request, you must send them the subscription key securely, for example, in an encrypted message. This step is a core part of the API Management workflow.</p>
-<h2 id="call-an-api-with-the-subscription-key">Call an API with the subscription key</h2>
-<p>Applications must include a valid key in all HTTP requests when they make calls to API endpoints that are protected by a subscription. Keys can be passed in the request header, or as a query string in the URL.</p>
+</table><p>You can regenerate these subscription keys at any time, for example, if you suspect that a key has been shared with unauthorized users.</p>
+<p><img src="https://docs.microsoft.com/en-us/training/wwl-azure/explore-api-management/media/subscription-keys.png" alt="Image showing the Subscriptions screen."><br>
+Every subscription has two keys, a primary and a secondary. Having two keys makes it easier when you do need to regenerate a key.</p>
+<p>Developers can obtain a key by submitting a subscription request. If you approve the request, you must send them the subscription key securely, for example, in an encrypted message.</p>
+<h4 id="call-an-api-with-the-subscription-key">Call an API with the subscription key</h4>
 <p>The default header name is <strong>Ocp-Apim-Subscription-Key</strong>, and the default query string is <strong>subscription-key</strong>.</p>
 <p>To test out your API calls, you can use the developer portal, or command-line tools, such as <strong>curl</strong>. Here’s an example of a <code>GET</code> request using the developer portal, which shows the subscription key header:</p>
 <p><img src="https://docs.microsoft.com/en-us/training/wwl-azure/explore-api-management/media/key-header-portal.png" alt="Call API from developer portal"></p>
@@ -176,10 +168,7 @@
 <pre><code>curl https://&lt;apim gateway&gt;.azure-api.net/api/path?subscription-key=&lt;key string&gt;
 </code></pre>
 <p>If the key is not passed in the header, or as a query string in the URL, you’ll get a <strong>401 Access Denied</strong> response from the API gateway.</p>
-<hr>
-<h2 id="next-unit-secure-apis-by-using-certificates">Next unit: Secure APIs by using certificates</h2>
-<p><a href="https://docs.microsoft.com/en-us/training/modules/explore-api-management/7-secure-access-api-certificates/">Continue</a></p>
-<p>Need help? See our <a href="https://docs.microsoft.com/en-us/training/support/troubleshooting?uid=learn.wwl.explore-api-management.secure-apis-by-using-subscriptions&amp;documentId=60705902-834b-7eb9-72ab-2860cedd4710&amp;versionIndependentDocumentId=0f7024e8-547f-3ff9-7290-96df15caa445&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fwwl-azure%2Fexplore-api-management%2F6-secure-access-api-subscriptions.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Ftraining%2Fmodules%2Fexplore-api-management%2F6-secure-access-api-subscriptions&amp;author=jeffko">troubleshooting guide</a> or provide specific feedback by <a href="https://docs.microsoft.com/en-us/training/support/troubleshooting?uid=learn.wwl.explore-api-management.secure-apis-by-using-subscriptions&amp;documentId=60705902-834b-7eb9-72ab-2860cedd4710&amp;versionIndependentDocumentId=0f7024e8-547f-3ff9-7290-96df15caa445&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fwwl-azure%2Fexplore-api-management%2F6-secure-access-api-subscriptions.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Ftraining%2Fmodules%2Fexplore-api-management%2F6-secure-access-api-subscriptions&amp;author=jeffko#report-feedback">reporting an issue</a>.</p>
+<p><strong>hier weiter</strong></p>
 <h2 id="secure-apis-by-using-certificates---training--microsoft-docs.md">Secure APIs by using certificates - Training  Microsoft <a href="http://Docs.md">Docs.md</a></h2>
 <ul>
 <li>3 minutes</li>
