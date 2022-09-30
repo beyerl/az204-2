@@ -16,9 +16,6 @@
 <li>
 <ul>
 <li></li>
-<li><a href="#secure-apis-by-using-certificates---training--microsoft-docs.md">Secure APIs by using certificates - Training  Microsoft Docs.md</a></li>
-<li><a href="#transport-layer-security-client-authentication">Transport Layer Security client authentication</a></li>
-<li><a href="#accepting-client-certificates-in-the-consumption-tier">Accepting client certificates in the Consumption tier</a></li>
 <li><a href="#next-unit-exercise-create-a-backend-api">Next unit: Exercise: Create a backend API</a></li>
 <li><a href="#demo-introduction---training--microsoft-docs.md">Demo-Introduction - Training  Microsoft Docs.md</a></li>
 <li><a href="#exercise-create-a-backend-api">Exercise: Create a backend API</a></li>
@@ -168,13 +165,9 @@ Every subscription has two keys, a primary and a secondary. Having two keys make
 <pre><code>curl https://&lt;apim gateway&gt;.azure-api.net/api/path?subscription-key=&lt;key string&gt;
 </code></pre>
 <p>If the key is not passed in the header, or as a query string in the URL, you’ll get a <strong>401 Access Denied</strong> response from the API gateway.</p>
-<p><strong>hier weiter</strong></p>
-<h2 id="secure-apis-by-using-certificates---training--microsoft-docs.md">Secure APIs by using certificates - Training  Microsoft <a href="http://Docs.md">Docs.md</a></h2>
-<ul>
-<li>3 minutes</li>
-</ul>
-<p>Certificates can be used to provide Transport Layer Security (TLS) mutual authentication between the client and the API gateway. You can configure the API Management gateway to allow only requests with certificates containing a specific thumbprint. The authorization at the gateway level is handled through inbound policies.</p>
-<h2 id="transport-layer-security-client-authentication">Transport Layer Security client authentication</h2>
+<h3 id="secure-apis-by-using-certificates">Secure APIs by using certificates</h3>
+<p>Certificates can be used to provide Transport Layer Security (TLS) mutual authentication between the client and the API gateway.</p>
+<h4 id="transport-layer-security-client-authentication">Transport Layer Security client authentication</h4>
 <p>With TLS client authentication, the API Management gateway can inspect the certificate contained within the client request and check for properties like:</p>
 
 <table>
@@ -202,14 +195,14 @@ Every subscription has two keys, a primary and a secondary. Having two keys make
 <td>Only allow certificates that have not expired</td>
 </tr>
 </tbody>
-</table><p>These properties are not mutually exclusive and they can be mixed together to form your own policy requirements. For instance, you can specify that the certificate passed in the request is signed by a certain certificate authority and hasn’t expired.</p>
-<p>Client certificates are signed to ensure that they are not tampered with. When a partner sends you a certificate, verify that it comes from them and not an imposter. There are two common ways to verify a certificate:</p>
+</table><p>These properties are not mutually exclusive and they can be mixed together to form your own policy requirements.</p>
+<p>Client certificates are signed to ensure that they are not tampered with. There are two common ways to verify a certificate:</p>
 <ul>
-<li>Check who issued the certificate. If the issuer was a certificate authority that you trust, you can use the certificate. You can configure the trusted certificate authorities in the Azure portal to automate this process.</li>
-<li>If the certificate is issued by the partner, verify that it came from them. For example, if they deliver the certificate in person, you can be sure of its authenticity. These are known as self-signed certificates.</li>
+<li>Check who issued the certificate. If the issuer was a certificate authority that you trust, you can use the certificate.</li>
+<li>If the certificate is issued by the partner, verify that it came from them.</li>
 </ul>
-<h2 id="accepting-client-certificates-in-the-consumption-tier">Accepting client certificates in the Consumption tier</h2>
-<p>The Consumption tier in API Management is designed to conform with serverless design principals. If you build your APIs from serverless technologies, such as Azure Functions, this tier is a good fit. In the Consumption tier, you must explicitly enable the use of client certificates, which you can do on the <strong>Custom domains</strong> page. This step is not necessary in other tiers.</p>
+<h4 id="accepting-client-certificates-in-the-consumption-tier">Accepting client certificates in the Consumption tier</h4>
+<p>The Consumption tier in API Management is designed to conform with serverless design principals. If you build your APIs from serverless technologies, such as Azure Functions, this tier is a good fit. In the Consumption tier, you must explicitly enable the use of client certificates, which you can do on the <strong>Custom domains</strong> page.</p>
 <p><img src="https://docs.microsoft.com/en-us/training/wwl-azure/explore-api-management/media/configure-request-certificates.png" alt="Configure the gateway to request certificates"></p>
 <p>Create these policies in the inbound processing policy file within the API Management gateway:</p>
 <p><img src="https://docs.microsoft.com/en-us/training/wwl-azure/explore-api-management/media/inbound-policy.png" alt="Inbound processing policy button"></p>
