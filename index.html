@@ -16,23 +16,11 @@
 <li>
 <ul>
 <li></li>
-<li><a href="#next-unit-exercise-create-a-backend-api">Next unit: Exercise: Create a backend API</a></li>
-<li><a href="#demo-introduction---training--microsoft-docs.md">Demo-Introduction - Training  Microsoft Docs.md</a></li>
-<li><a href="#exercise-create-a-backend-api">Exercise: Create a backend API</a></li>
-<li><a href="#prerequisites">Prerequisites</a></li>
-<li><a href="#login-to-azure">Login to Azure</a></li>
-<li><a href="#create-an-api-management-instance">Create an API Management instance</a></li>
-<li><a href="#import-a-backend-api">Import a backend API</a></li>
-<li><a href="#configure-the-backend-settings">Configure the backend settings</a></li>
-<li><a href="#test-the-api">Test the API</a></li>
-<li><a href="#clean-up-azure-resources">Clean up Azure resources</a></li>
-<li><a href="#az-204-develop-event-based-solutions---training--microsoft-docs.md">AZ-204 Develop event-based solutions - Training  Microsoft Docs.md</a></li>
-<li><a href="#prerequisites-1">Prerequisites</a></li>
-<li><a href="#explore-azure-event-grid---training--microsoft-docs.md">Explore Azure Event Grid - Training  Microsoft Docs.md</a></li>
-<li><a href="#learning-objectives">Learning objectives</a></li>
-<li><a href="#prerequisites-2">Prerequisites</a></li>
-<li><a href="#introduction---training--microsoft-docs8.md">Introduction - Training  Microsoft Docs(8).md</a></li>
-<li><a href="#explore-azure-event-grid---training--microsoft-docs1.md">Explore Azure Event Grid - Training  Microsoft Docs(1).md</a></li>
+</ul>
+</li>
+<li><a href="#az-204-develop-event-based-solutions">AZ-204 Develop event-based solutions</a>
+<ul>
+<li><a href="#explore-azure-event-grid">Explore Azure Event Grid</a></li>
 <li><a href="#concepts-in-azure-event-grid">Concepts in Azure Event Grid</a></li>
 <li><a href="#events">Events</a></li>
 <li><a href="#event-sources">Event sources</a></li>
@@ -65,7 +53,7 @@
 <li><a href="#advanced-filtering">Advanced filtering</a></li>
 <li><a href="#next-unit-exercise-route-custom-events-to-web-endpoint-by-using-azure-cli">Next unit: Exercise: Route custom events to web endpoint by using Azure CLI</a></li>
 <li><a href="#exercise-route-custom-events-to-web-endpoint-by-using-azure-cli---training--microsoft-docs.md">Exercise Route custom events to web endpoint by using Azure CLI - Training  Microsoft Docs.md</a></li>
-<li><a href="#prerequisites-3">Prerequisites</a></li>
+<li><a href="#prerequisites">Prerequisites</a></li>
 <li><a href="#create-a-resource-group">Create a resource group</a></li>
 <li><a href="#enable-an-event-grid-resource-provider">Enable an Event Grid resource provider</a></li>
 <li><a href="#create-a-custom-topic">Create a custom topic</a></li>
@@ -74,8 +62,8 @@
 <li><a href="#send-an-event-to-your-custom-topic">Send an event to your custom topic</a></li>
 <li><a href="#clean-up-resources">Clean up resources</a></li>
 <li><a href="#explore-azure-event-hubs---training--microsoft-docs.md">Explore Azure Event Hubs - Training  Microsoft Docs.md</a></li>
-<li><a href="#learning-objectives-1">Learning objectives</a></li>
-<li><a href="#prerequisites-4">Prerequisites</a></li>
+<li><a href="#learning-objectives">Learning objectives</a></li>
+<li><a href="#prerequisites-1">Prerequisites</a></li>
 <li><a href="#introduction---training--microsoft-docs9.md">Introduction - Training  Microsoft Docs(9).md</a></li>
 <li><a href="#next-unit-discover-azure-event-hubs">Next unit: Discover Azure Event Hubs</a></li>
 <li><a href="#discover-azure-event-hubs---training--microsoft-docs.md">Discover Azure Event Hubs - Training  Microsoft Docs.md</a></li>
@@ -104,7 +92,7 @@
 <li><a href="#read-events-from-an-event-hub-partition">Read events from an Event Hub partition</a></li>
 <li><a href="#process-events-using-an-event-processor-client">Process events using an Event Processor client</a></li>
 <li><a href="#az-204-develop-message-based-solutions---training--microsoft-docs.md">AZ-204 Develop message-based solutions - Training  Microsoft Docs.md</a></li>
-<li><a href="#prerequisites-5">Prerequisites</a></li>
+<li><a href="#prerequisites-2">Prerequisites</a></li>
 <li><a href="#discover-azure-message-queues---training--microsoft-docs.md">Discover Azure message queues - Training  Microsoft Docs.md</a></li>
 <li><a href="#introduction---training--microsoft-docs10.md">Introduction - Training  Microsoft Docs(10).md</a></li>
 <li><a href="#next-unit-choose-a-message-queue-solution">Next unit: Choose a message queue solution</a></li>
@@ -202,11 +190,9 @@ Every subscription has two keys, a primary and a secondary. Having two keys make
 <li>If the certificate is issued by the partner, verify that it came from them.</li>
 </ul>
 <h4 id="accepting-client-certificates-in-the-consumption-tier">Accepting client certificates in the Consumption tier</h4>
-<p>The Consumption tier in API Management is designed to conform with serverless design principals. If you build your APIs from serverless technologies, such as Azure Functions, this tier is a good fit. In the Consumption tier, you must explicitly enable the use of client certificates, which you can do on the <strong>Custom domains</strong> page.</p>
-<p><img src="https://docs.microsoft.com/en-us/training/wwl-azure/explore-api-management/media/configure-request-certificates.png" alt="Configure the gateway to request certificates"></p>
-<p>Create these policies in the inbound processing policy file within the API Management gateway:</p>
+<p>The Consumption tier in API Management is designed to conform with serverless design principals. If you build your APIs from serverless technologies, such as Azure Functions, this tier is a good fit. In the Consumption tier, you must explicitly enable the use of client certificates, which you can do on the <strong>Custom domains</strong> page. Create these policies in the inbound processing policy file within the API Management gateway:</p>
 <p><img src="https://docs.microsoft.com/en-us/training/wwl-azure/explore-api-management/media/inbound-policy.png" alt="Inbound processing policy button"></p>
-<h3 id="check-the-thumbprint-of-a-client-certificate">Check the thumbprint of a client certificate</h3>
+<h5 id="check-the-thumbprint-of-a-client-certificate">Check the thumbprint of a client certificate</h5>
 <p>Every client certificate includes a thumbprint, which is a hash, calculated from other certificate properties. The thumbprint ensures that the values in the certificate have not been altered since the certificate was issued by the certificate authority. You can check the thumbprint in your policy. The following example checks the thumbprint of the certificate passed in the request:</p>
 <pre><code>&lt;choose&gt;
     &lt;when condition="@(context.Request.Certificate == null || context.Request.Certificate.Thumbprint != "desired-thumbprint")" &gt;
@@ -216,7 +202,7 @@ Every subscription has two keys, a primary and a secondary. Having two keys make
     &lt;/when&gt;
 &lt;/choose&gt;
 </code></pre>
-<h3 id="check-the-thumbprint-against-certificates-uploaded-to-api-management">Check the thumbprint against certificates uploaded to API Management</h3>
+<h5 id="check-the-thumbprint-against-certificates-uploaded-to-api-management">Check the thumbprint against certificates uploaded to API Management</h5>
 <p>In the previous example, only one thumbprint would work so only one certificate would be validated. Usually, each customer or partner company would pass a different certificate with a different thumbprint. To support this scenario, obtain the certificates from your partners and use the <strong>Client certificates</strong> page in the Azure portal to upload them to the API Management resource. Then add this code to your policy:</p>
 <pre><code>&lt;choose&gt;
     &lt;when condition="@(context.Request.Certificate == null || !context.Request.Certificate.Verify()  || !context.Deployment.Certificates.Any(c =&gt; c.Value.Thumbprint == context.Request.Certificate.Thumbprint))" &gt;
@@ -226,8 +212,7 @@ Every subscription has two keys, a primary and a secondary. Having two keys make
     &lt;/when&gt;
 &lt;/choose&gt;
 </code></pre>
-<h3 id="check-the-issuer-and-subject-of-a-client-certificate">Check the issuer and subject of a client certificate</h3>
-<p>This example checks the issuer and subject of the certificate passed in the request:</p>
+<h5 id="check-the-issuer-and-subject-of-a-client-certificate">Check the issuer and subject of a client certificate</h5>
 <pre><code>&lt;choose&gt;
     &lt;when condition="@(context.Request.Certificate == null || context.Request.Certificate.Issuer != "trusted-issuer" || context.Request.Certificate.SubjectName.Name != "expected-subject-name")" &gt;
         &lt;return-response&gt;
@@ -236,225 +221,10 @@ Every subscription has two keys, a primary and a secondary. Having two keys make
     &lt;/when&gt;
 &lt;/choose&gt;
 </code></pre>
-<hr>
-<h2 id="next-unit-exercise-create-a-backend-api">Next unit: Exercise: Create a backend API</h2>
-<p><a href="https://docs.microsoft.com/en-us/training/modules/explore-api-management/8-import-api/">Continue</a></p>
-<p>Need help? See our <a href="https://docs.microsoft.com/en-us/training/support/troubleshooting?uid=learn.wwl.explore-api-management.secure-apis-by-using-certificates&amp;documentId=73e782fd-7cdf-e4d3-6787-1a59026e8e87&amp;versionIndependentDocumentId=9c73e1c1-25bd-415e-d1e7-cad5dde149fc&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fwwl-azure%2Fexplore-api-management%2F7-secure-access-api-certificates.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Ftraining%2Fmodules%2Fexplore-api-management%2F7-secure-access-api-certificates&amp;author=jeffko">troubleshooting guide</a> or provide specific feedback by <a href="https://docs.microsoft.com/en-us/training/support/troubleshooting?uid=learn.wwl.explore-api-management.secure-apis-by-using-certificates&amp;documentId=73e782fd-7cdf-e4d3-6787-1a59026e8e87&amp;versionIndependentDocumentId=9c73e1c1-25bd-415e-d1e7-cad5dde149fc&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fwwl-azure%2Fexplore-api-management%2F7-secure-access-api-certificates.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Ftraining%2Fmodules%2Fexplore-api-management%2F7-secure-access-api-certificates&amp;author=jeffko#report-feedback">reporting an issue</a>.</p>
-<h2 id="demo-introduction---training--microsoft-docs.md">Demo-Introduction - Training  Microsoft <a href="http://Docs.md">Docs.md</a></h2>
-<h2 id="exercise-create-a-backend-api">Exercise: Create a backend API</h2>
-<ul>
-<li>10 minutes</li>
-</ul>
-<p>In this exercise you’ll learn how to perform the following actions:</p>
-<ul>
-<li>Create an API Management (APIM) instance</li>
-<li>Import an API</li>
-<li>Configure the backend settings</li>
-<li>Test the API</li>
-</ul>
-<h2 id="prerequisites">Prerequisites</h2>
-<ul>
-<li>An <strong>Azure account</strong> with an active subscription. If you don’t already have one, you can sign up for a free trial at <a href="https://azure.com/free">https://azure.com/free</a>.</li>
-</ul>
-<h2 id="login-to-azure">Login to Azure</h2>
-<ol>
-<li>
-<p>Login to the <a href="https://portal.azure.com/">Azure portal</a> and open the Cloud Shell.</p>
-<p><img src="https://docs.microsoft.com/en-us/training/wwl-azure/explore-api-management/media/cloud-shell-menu.png" alt="The location of Cloud Shell launch button."></p>
-</li>
-<li>
-<p>After the shell opens be sure to select the <strong>Bash</strong> environment.</p>
-<p><img src="https://docs.microsoft.com/en-us/training/wwl-azure/explore-api-management/media/shell-bash-selection.png" alt="Selecting the Bash environment."></p>
-</li>
-</ol>
-<h2 id="create-an-api-management-instance">Create an API Management instance</h2>
-<ol>
-<li>
-<p>Let’s set some variables for the CLI commands to use to reduce the amount of retyping. Replace <code>&lt;myLocation&gt;</code> with a region that makes sense for you. The APIM name needs to be a globally unique name, and the script below generates a random string. Replace <code>&lt;myEmail&gt;</code> with an email address you can access.</p>
-<pre><code>myApiName=az204-apim-$RANDOM
-myLocation=&lt;myLocation&gt;
-myEmail=&lt;myEmail&gt;
-</code></pre>
-</li>
-<li>
-<p>Create a resource group. The commands below will create a resource group named <em>az204-apim-rg</em>.</p>
-<pre><code>az group create --name az204-apim-rg --location $myLocation
-</code></pre>
-</li>
-<li>
-<p>Create an APIM instance. The <code>az apim create</code> command is used to create the instance. The <code>--sku-name Consumption</code> option is used to speed up the process for the walkthrough.</p>
-<pre><code>az apim create -n $myApiName \
-    --location $myLocation \
-    --publisher-email $myEmail  \
-    --resource-group az204-apim-rg \
-    --publisher-name AZ204-APIM-Exercise \
-    --sku-name Consumption 
-</code></pre>
-<p>Note</p>
-<p>The operation should complete in about five minutes.</p>
-</li>
-</ol>
-<h2 id="import-a-backend-api">Import a backend API</h2>
-<p>This section shows how to import and publish an OpenAPI specification backend API.</p>
-<ol>
-<li>
-<p>In the Azure portal, search for and select <strong>API Management services</strong>.</p>
-</li>
-<li>
-<p>On the <strong>API Management</strong> screen, select the API Management instance you created.</p>
-</li>
-<li>
-<p>Select <strong>APIs</strong> in the <strong>API management service</strong> navigation pane.</p>
-<p><img src="https://docs.microsoft.com/en-us/training/wwl-azure/explore-api-management/media/select-apis-navigation-pane.png" alt="Select APIs in the service navigation pane."></p>
-</li>
-<li>
-<p>Select <strong>OpenAPI</strong> from the list and select <strong>Full</strong> in the pop-up.</p>
-<p><img src="https://docs.microsoft.com/en-us/training/wwl-azure/explore-api-management/media/create-api.png" alt="The OpenAPI dialog box. Fields are detailed in the table below."></p>
-<p>Use the values from the table below to fill out the form. You can leave any fields not mentioned their default value.</p>
-
-<table>
-<thead>
-<tr>
-<th>Setting</th>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>OpenAPI Specification</strong></td>
-<td><code>https://conferenceapi.azurewebsites.net?format=json</code></td>
-<td>References the service implementing the API, requests are forwarded to this address. Most of the necessary information in the form is automatically populated after you enter this.</td>
-</tr>
-<tr>
-<td><strong>Display name</strong></td>
-<td><em>Demo Conference API</em></td>
-<td>This name is displayed in the Developer portal.</td>
-</tr>
-<tr>
-<td><strong>Name</strong></td>
-<td><em>demo-conference-api</em></td>
-<td>Provides a unique name for the API.</td>
-</tr>
-<tr>
-<td><strong>Description</strong></td>
-<td>Automatically populated</td>
-<td>Provide an optional description of the API.</td>
-</tr>
-<tr>
-<td><strong>API URL suffix</strong></td>
-<td><em>conference</em></td>
-<td>The suffix is appended to the base URL for the API management service. API Management distinguishes APIs by their suffix and therefore the suffix must be unique for every API for a given publisher.</td>
-</tr>
-</tbody>
-</table></li>
-<li>
-<p>Select <strong>Create</strong>.</p>
-</li>
-</ol>
-<h2 id="configure-the-backend-settings">Configure the backend settings</h2>
-<p>The <em>Demo Conference API</em> is created and a backend needs to be specified.</p>
-<ol>
-<li>
-<p>Select <strong>Settings</strong> in the blade to the right and enter <code>https://conferenceapi.azurewebsites.net/</code> in the <strong>Web service URL</strong> field.</p>
-</li>
-<li>
-<p>Deselect the <strong>Subscription required</strong> checkbox.</p>
-<p><img src="https://docs.microsoft.com/en-us/training/wwl-azure/explore-api-management/media/api-settings-backend.png" alt="Specify the backend URL for the API."></p>
-</li>
-<li>
-<p>Select <strong>Save</strong>.</p>
-</li>
-</ol>
-<h2 id="test-the-api">Test the API</h2>
-<p>Now that the API has been imported and the backend configured it is time to test the API.</p>
-<ol>
-<li>
-<p>Select <strong>Test</strong>.</p>
-<p><img src="https://docs.microsoft.com/en-us/training/wwl-azure/explore-api-management/media/select-test.png" alt="Select test in the right pane."></p>
-</li>
-<li>
-<p>Select <strong>GetSpeakers</strong>. The page shows <strong>Query parameters</strong> and <strong>Headers</strong>, if any. The <code>Ocp-Apim-Subscription-Key</code> is filled in automatically for the subscription key associated with this API.</p>
-</li>
-<li>
-<p>Select <strong>Send</strong>.</p>
-<p>Backend responds with <strong>200 OK</strong> and some data.</p>
-</li>
-</ol>
-<h2 id="clean-up-azure-resources">Clean up Azure resources</h2>
-<p>When you are finished with the resources you created in this exercise you can use the command below to delete the resource group and all related resources.</p>
-<pre><code>az group delete --name az204-apim-rg --no-wait
-</code></pre>
-<p>Need help? See our <a href="https://docs.microsoft.com/en-us/training/support/troubleshooting?uid=learn.wwl.explore-api-management.exercise-create-backend-api&amp;documentId=0d3802cf-a40c-0e23-af06-29bc2f291255&amp;versionIndependentDocumentId=7d0a7c0c-39fa-f5b9-bcd3-1ac06d057931&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fwwl-azure%2Fexplore-api-management%2F8-import-api.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Ftraining%2Fmodules%2Fexplore-api-management%2F8-import-api&amp;author=jeffko">troubleshooting guide</a> or provide specific feedback by <a href="https://docs.microsoft.com/en-us/training/support/troubleshooting?uid=learn.wwl.explore-api-management.exercise-create-backend-api&amp;documentId=0d3802cf-a40c-0e23-af06-29bc2f291255&amp;versionIndependentDocumentId=7d0a7c0c-39fa-f5b9-bcd3-1ac06d057931&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fwwl-azure%2Fexplore-api-management%2F8-import-api.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Ftraining%2Fmodules%2Fexplore-api-management%2F8-import-api&amp;author=jeffko#report-feedback">reporting an issue</a>.</p>
-<h2 id="az-204-develop-event-based-solutions---training--microsoft-docs.md">AZ-204 Develop event-based solutions - Training  Microsoft <a href="http://Docs.md">Docs.md</a></h2>
-<p><img src="https://docs.microsoft.com/en-us/learn/achievements/az-204-develop-event-based-solutions.svg" alt=""></p>
-<ul>
-<li>54 min</li>
-<li>Learning Path</li>
-<li>2 Modules</li>
-</ul>
-<p>Learn how to build applications with event-based architectures by integrating Azure Event Grid and Azure Event Hubs in to your solution.</p>
-<h2 id="prerequisites-1">Prerequisites</h2>
-<ul>
-<li>At least one year of experience developing scalable solutions through all phases of software development.</li>
-<li>Have a base understanding of Azure and cloud concepts, services, and the Azure portal.</li>
-<li>If you are new to Azure or cloud computing it is recommended you complete the <a href="https://docs.microsoft.com/en-us/learn/paths/az-900-describe-cloud-concepts/">AZ-900: Azure Fundamentals</a> course.</li>
-</ul>
-<h3 id="modules-in-this-learning-path">Modules in this learning path</h3>
-<h2 id="explore-azure-event-grid---training--microsoft-docs.md">Explore Azure Event Grid - Training  Microsoft <a href="http://Docs.md">Docs.md</a></h2>
-<ol>
-<li><a href="https://docs.microsoft.com/en-us/">Docs</a></li>
-<li><a href="https://docs.microsoft.com/en-us/learn/">Learn</a></li>
-<li><a href="https://docs.microsoft.com/en-us/learn/browse/">Browse</a></li>
-<li><a href="https://docs.microsoft.com/en-us/training/paths/az-204-develop-event-based-solutions/">AZ-204: Develop event-based solutions</a></li>
-</ol>
-<p><img src="https://docs.microsoft.com/en-us/learn/achievements/1-explore-azure-event-grid.svg" alt=""></p>
-<ul>
-<li>30 min</li>
-<li>Module</li>
-<li>10 Units</li>
-</ul>
-<p>4.6 out of 5 stars from 660 votes</p>
-<p>5 star 75% 75%</p>
-<p>4 star 13% 13%</p>
-<p>3 star 7% 7%</p>
-<p>2 star 3% 3%</p>
-<p>1 star 2% 2%</p>
-<p>Intermediate</p>
-<p>Developer</p>
-<p>Event Grid</p>
-<p>Learn how to integrate Azure Event Grid in to your solution, implement access control to events, and how to route custom events to web endpoint by using Azure CLI.</p>
-<h2 id="learning-objectives">Learning objectives</h2>
-<p>After completing this module, you’ll be able to:</p>
-<ul>
-<li>Describe how Event Grid operates and how it connects to services and event handlers.</li>
-<li>Explain how Event Grid delivers events and how it handles errors.</li>
-<li>Implement authentication and authorization.</li>
-<li>Route custom events to web endpoint by using Azure CLI.</li>
-</ul>
-<h2 id="prerequisites-2">Prerequisites</h2>
-<ul>
-<li>You should be familiar with developer concepts and terminology.</li>
-<li>An understanding of cloud computing and some experience with the Azure portal.</li>
-</ul>
-<h2 id="introduction---training--microsoft-docs8.md">Introduction - Training  Microsoft Docs(8).md</h2>
-<ul>
-<li>3 minutes</li>
-</ul>
-<p>Azure Event Grid is deeply integrated with Azure services and can be integrated with third-party services. It simplifies event consumption and lowers costs by eliminating the need for constant polling. Event Grid efficiently and reliably routes events from Azure and non-Azure resources, and distributes the events to registered subscriber endpoints.</p>
-<p>After completing this module, you’ll be able to:</p>
-<ul>
-<li>Describe how Event Grid operates and how it connects to services and event handlers.</li>
-<li>Explain how Event Grid delivers events and how it handles errors.</li>
-<li>Implement authentication and authorization.</li>
-<li>Route custom events to web endpoint by using Azure CLI.</li>
-</ul>
-<p>Need help? See our <a href="https://docs.microsoft.com/en-us/training/support/troubleshooting?uid=learn.wwl.azure-event-grid.introduction&amp;documentId=855d0b1f-9492-975f-32f4-7826b443824d&amp;versionIndependentDocumentId=a9f870ea-8a11-9a35-5af4-716fb8c62ee6&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fwwl-azure%2Fazure-event-grid%2F1-introduction.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Ftraining%2Fmodules%2Fazure-event-grid%2F1-introduction&amp;author=jeffko">troubleshooting guide</a> or provide specific feedback by <a href="https://docs.microsoft.com/en-us/training/support/troubleshooting?uid=learn.wwl.azure-event-grid.introduction&amp;documentId=855d0b1f-9492-975f-32f4-7826b443824d&amp;versionIndependentDocumentId=a9f870ea-8a11-9a35-5af4-716fb8c62ee6&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fwwl-azure%2Fazure-event-grid%2F1-introduction.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Ftraining%2Fmodules%2Fazure-event-grid%2F1-introduction&amp;author=jeffko#report-feedback">reporting an issue</a>.</p>
-<h2 id="explore-azure-event-grid---training--microsoft-docs1.md">Explore Azure Event Grid - Training  Microsoft Docs(1).md</h2>
-<ul>
-<li>3 minutes</li>
-</ul>
-<p>Azure Event Grid is an eventing backplane that enables event-driven, reactive programming. It uses the publish-subscribe model. Publishers emit events, but have no expectation about how the events are handled. Subscribers decide on which events they want to handle.</p>
+<h1 id="az-204-develop-event-based-solutions">AZ-204 Develop event-based solutions</h1>
+<h2 id="explore-azure-event-grid">Explore Azure Event Grid</h2>
+<h3 id="explore-azure-event-grid-1">Explore Azure Event Grid</h3>
+<p>Azure Event Grid is an eventing backplane that enables event-driven, reactive programming. It uses the publish-subscribe model. Publishers emit events, but have no expectation about how the events are handled. Subscribers decide on which events they want to handle. Event Grid efficiently and reliably routes events from Azure and non-Azure resources, and distributes the events to registered subscriber endpoints.</p>
 <p>Event Grid allows you to easily build applications with event-based architectures. Event Grid has built-in support for events coming from Azure services, like storage blobs and resource groups. Event Grid also has support for your own events, using custom topics.</p>
 <p>You can use filters to route specific events to different endpoints, multicast to multiple endpoints, and make sure your events are reliably delivered.</p>
 <p>This image below shows how Event Grid connects sources and handlers, and isn’t a comprehensive list of supported integrations.</p>
@@ -845,7 +615,7 @@ myEmail=&lt;myEmail&gt;
 <li>Subscribe to a custom topic</li>
 <li>Send an event to a custom topic</li>
 </ul>
-<h2 id="prerequisites-3">Prerequisites</h2>
+<h2 id="prerequisites">Prerequisites</h2>
 <ul>
 <li>An <strong>Azure account</strong> with an active subscription. If you don’t already have one, you can sign up for a free trial at <a href="https://azure.com/free">https://azure.com/free</a>.</li>
 </ul>
@@ -992,14 +762,14 @@ key=$(az eventgrid topic key list --name $myTopicName -g az204-evgrid-rg --query
 <p>Developer</p>
 <p>Event Hubs</p>
 <p>Learn how Azure Event Hubs captures events and how to scale your processing application.</p>
-<h2 id="learning-objectives-1">Learning objectives</h2>
+<h2 id="learning-objectives">Learning objectives</h2>
 <p>After completing this module, you’ll be able to:</p>
 <ul>
 <li>Describe the benefits of using Event Hubs and how it captures streaming data.</li>
 <li>Explain how to process events.</li>
 <li>Perform common operations with the Event Hubs client library.</li>
 </ul>
-<h2 id="prerequisites-4">Prerequisites</h2>
+<h2 id="prerequisites-1">Prerequisites</h2>
 <ul>
 <li>You should be familiar with developer concepts and terminology.</li>
 <li>An understanding of cloud computing and some experience with the Azure portal.</li>
@@ -1290,13 +1060,13 @@ finally
 <p>Queue Storage</p>
 <p>Service Bus</p>
 <p>Learn how to build applications with message-based architectures by integrating Azure Service Bus and Azure Queue Storage in to your solution.</p>
-<h2 id="prerequisites-5">Prerequisites</h2>
+<h2 id="prerequisites-2">Prerequisites</h2>
 <ul>
 <li>At least one year of experience developing scalable solutions through all phases of software development.</li>
 <li>Have a base understanding of Azure and cloud concepts, services, and the Azure portal.</li>
 <li>If you are new to Azure or cloud computing it is recommended you complete the <a href="https://docs.microsoft.com/en-us/learn/paths/az-900-describe-cloud-concepts/">AZ-900: Azure Fundamentals</a> course.</li>
 </ul>
-<h3 id="modules-in-this-learning-path-1">Modules in this learning path</h3>
+<h3 id="modules-in-this-learning-path">Modules in this learning path</h3>
 <p><img src="https://docs.microsoft.com/en-us/learn/achievements/discover-message-queue.svg" alt=""></p>
 <p>Learn how to integrate Azure Service Bus and Azure Queue storage in to your solution, and how to send and receive message by using .NET.</p>
 <p><a href="https://docs.microsoft.com/en-us/training/modules/discover-azure-message-queue/1-introduction/">Start</a></p>
