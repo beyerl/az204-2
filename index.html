@@ -21,20 +21,6 @@
 <li><a href="#az-204-develop-event-based-solutions">AZ-204 Develop event-based solutions</a>
 <ul>
 <li><a href="#explore-azure-event-grid">Explore Azure Event Grid</a></li>
-<li><a href="#concepts-in-azure-event-grid">Concepts in Azure Event Grid</a></li>
-<li><a href="#events">Events</a></li>
-<li><a href="#event-sources">Event sources</a></li>
-<li><a href="#topics">Topics</a></li>
-<li><a href="#event-subscriptions">Event subscriptions</a></li>
-<li><a href="#event-handlers">Event handlers</a></li>
-<li><a href="#next-unit-discover-event-schemas">Next unit: Discover event schemas</a></li>
-<li><a href="#discover-event-schemas---training--microsoft-docs.md">Discover event schemas - Training  Microsoft Docs.md</a></li>
-<li><a href="#event-schema">Event schema</a></li>
-<li><a href="#event-properties">Event properties</a></li>
-<li><a href="#cloudevents-v1.0-schema">CloudEvents v1.0 schema</a></li>
-<li><a href="#next-unit-explore-event-delivery-durability">Next unit: Explore event delivery durability</a></li>
-<li><a href="#explore-event-delivery-durability---training--microsoft-docs.md">Explore event delivery durability - Training  Microsoft Docs.md</a></li>
-<li><a href="#retry-schedule">Retry schedule</a></li>
 <li><a href="#retry-policy">Retry policy</a></li>
 <li><a href="#output-batching">Output batching</a></li>
 <li><a href="#delayed-delivery">Delayed delivery</a></li>
@@ -227,42 +213,34 @@ Every subscription has two keys, a primary and a secondary. Having two keys make
 <p>Azure Event Grid is an eventing backplane that enables event-driven, reactive programming. It uses the publish-subscribe model. Publishers emit events, but have no expectation about how the events are handled. Subscribers decide on which events they want to handle. Event Grid efficiently and reliably routes events from Azure and non-Azure resources, and distributes the events to registered subscriber endpoints.</p>
 <p>Event Grid allows you to easily build applications with event-based architectures. Event Grid has built-in support for events coming from Azure services, like storage blobs and resource groups. Event Grid also has support for your own events, using custom topics.</p>
 <p>You can use filters to route specific events to different endpoints, multicast to multiple endpoints, and make sure your events are reliably delivered.</p>
-<p>This image below shows how Event Grid connects sources and handlers, and isn’t a comprehensive list of supported integrations.</p>
 <p><img src="https://docs.microsoft.com/en-us/training/wwl-azure/azure-event-grid/media/functional-model.png" alt="Image showing the Event Grid model of sources and handlers"></p>
-<h2 id="concepts-in-azure-event-grid">Concepts in Azure Event Grid</h2>
-<p>There are five concepts in Azure Event Grid you need to understand to help you get started, and are described in more detail below:</p>
+<h4 id="concepts-in-azure-event-grid">Concepts in Azure Event Grid</h4>
 <ul>
 <li><strong>Events</strong> - What happened.</li>
 <li><strong>Event sources</strong> - Where the event took place.</li>
 <li><strong>Topics</strong> - The endpoint where publishers send events.</li>
-<li><strong>Event subscriptions</strong> - The endpoint or built-in mechanism to route events, sometimes to more than one handler. Subscriptions are also used by handlers to intelligently filter incoming events.</li>
+<li><strong>Event subscriptions</strong> - The endpoint or built-in mechanism to route events, sometimes to more than one handler.</li>
 <li><strong>Event handlers</strong> - The app or service reacting to the event.</li>
 </ul>
-<h2 id="events">Events</h2>
-<p>An event is the smallest amount of information that fully describes something that happened in the system. Every event has common information like: source of the event, time the event took place, and unique identifier. Every event also has specific information that is only relevant to the specific type of event. For example, an event about a new file being created in Azure Storage has details about the file, such as the <code>lastTimeModified</code> value. Or, an Event Hubs event has the URL of the Capture file.</p>
-<p>An event of size up to 64 KB is covered by General Availability (GA) Service Level Agreement (SLA). The support for an event of size up to 1 MB is currently in preview. Events over 64 KB are charged in 64-KB increments.</p>
-<h2 id="event-sources">Event sources</h2>
-<p>An event source is where the event happens. Each event source is related to one or more event types. For example, Azure Storage is the event source for blob created events. IoT Hub is the event source for device created events. Your application is the event source for custom events that you define. Event sources are responsible for sending events to Event Grid.</p>
-<h2 id="topics">Topics</h2>
+<h5 id="events">Events</h5>
+<p>An event is the smallest amount of information that fully describes something that happened in the system. Every event has common information like: source of the event, time the event took place, and unique identifier. Every event also has specific information that is only relevant to the specific type of event.</p>
+<p>An event of size up to 64 KB is covered by General Availability (GA) Service Level Agreement (SLA).</p>
+<h5 id="event-sources">Event sources</h5>
+<p>An event source is where the event happens. Each event source is related to one or more event types. For example, Azure Storage is the event source for blob created events.</p>
+<h5 id="topics">Topics</h5>
 <p>The event grid topic provides an endpoint where the source sends events. The publisher creates the event grid topic, and decides whether an event source needs one topic or more than one topic. A topic is used for a collection of related events. To respond to certain types of events, subscribers decide which topics to subscribe to.</p>
-<p><strong>System topics</strong> are built-in topics provided by Azure services. You don’t see system topics in your Azure subscription because the publisher owns the topics, but you can subscribe to them. To subscribe, you provide information about the resource you want to receive events from. As long as you have access to the resource, you can subscribe to its events.</p>
-<p><strong>Custom topics</strong> are application and third-party topics. When you create or are assigned access to a custom topic, you see that custom topic in your subscription.</p>
-<h2 id="event-subscriptions">Event subscriptions</h2>
-<p>A subscription tells Event Grid which events on a topic you’re interested in receiving. When creating the subscription, you provide an endpoint for handling the event. You can filter the events that are sent to the endpoint. You can filter by event type, or subject pattern. Set an expiration for event subscriptions that are only needed for a limited time and you don’t want to worry about cleaning up those subscriptions.</p>
-<h2 id="event-handlers">Event handlers</h2>
-<p>From an Event Grid perspective, an event handler is the place where the event is sent. The handler takes some further action to process the event. Event Grid supports several handler types. You can use a supported Azure service or your own webhook as the handler. Depending on the type of handler, Event Grid follows different mechanisms to guarantee the delivery of the event. For HTTP webhook event handlers, the event is retried until the handler returns a status code of <code>200 – OK</code>. For Azure Storage Queue, the events are retried until the Queue service successfully processes the message push into the queue.</p>
-<hr>
-<h2 id="next-unit-discover-event-schemas">Next unit: Discover event schemas</h2>
-<p><a href="https://docs.microsoft.com/en-us/training/modules/azure-event-grid/3-event-grid-schema/">Continue</a></p>
-<p>Need help? See our <a href="https://docs.microsoft.com/en-us/training/support/troubleshooting?uid=learn.wwl.azure-event-grid.event-grid-overview&amp;documentId=febf182d-09a2-12c1-adc8-453e2682ac02&amp;versionIndependentDocumentId=ebb45cb6-e361-bdd6-1405-b8f034e73bc3&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fwwl-azure%2Fazure-event-grid%2F2-event-grid-overview.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Ftraining%2Fmodules%2Fazure-event-grid%2F2-event-grid-overview&amp;author=jeffko">troubleshooting guide</a> or provide specific feedback by <a href="https://docs.microsoft.com/en-us/training/support/troubleshooting?uid=learn.wwl.azure-event-grid.event-grid-overview&amp;documentId=febf182d-09a2-12c1-adc8-453e2682ac02&amp;versionIndependentDocumentId=ebb45cb6-e361-bdd6-1405-b8f034e73bc3&amp;contentPath=%2FMicrosoftDocs%2Flearn-pr%2Fblob%2Flive%2Flearn-pr%2Fwwl-azure%2Fazure-event-grid%2F2-event-grid-overview.yml&amp;url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Ftraining%2Fmodules%2Fazure-event-grid%2F2-event-grid-overview&amp;author=jeffko#report-feedback">reporting an issue</a>.</p>
-<h2 id="discover-event-schemas---training--microsoft-docs.md">Discover event schemas - Training  Microsoft <a href="http://Docs.md">Docs.md</a></h2>
-<ul>
-<li>3 minutes</li>
-</ul>
-<p>Events consist of a set of four required string properties. The properties are common to all events from any publisher. The data object has properties that are specific to each publisher. For system topics, these properties are specific to the resource provider, such as Azure Storage or Azure Event Hubs.</p>
-<p>Event sources send events to Azure Event Grid in an array, which can have several event objects. When posting events to an event grid topic, the array can have a total size of up to 1 MB. Each event in the array is limited to 1 MB. If an event or the array is greater than the size limits, you receive the response <code>413 Payload Too Large</code>. Operations are charged in 64 Kb increments though. So, events over 64 Kb will incur operations charges as though they were multiple events. For example, an event that is 130 KB would incur operations as though it were 3 separate events.</p>
-<p>Event Grid sends the events to subscribers in an array that has a single event. You can find the JSON schema for the Event Grid event and each Azure publisher’s data payload in the <a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/eventgrid/data-plane">Event Schema store</a>.</p>
-<h2 id="event-schema">Event schema</h2>
+<p><strong>System topics</strong> are built-in topics provided by Azure services. You don’t see system topics in your Azure subscription because the publisher owns the topics, but you can subscribe to them.</p>
+<p><strong>Custom topics</strong> are application and third-party topics.</p>
+<h5 id="event-subscriptions">Event subscriptions</h5>
+<p>A subscription tells Event Grid which events on a topic you’re interested in receiving. When creating the subscription, you provide an endpoint for handling the event. You can filter the events that are sent to the endpoint. Set an expiration for event subscriptions that are only needed for a limited time .</p>
+<h5 id="event-handlers">Event handlers</h5>
+<p>From an Event Grid perspective, an event handler is the place where the event is sent. The handler takes some further action to process the event. Event Grid supports several handler types.</p>
+<h3 id="discover-event-schemas">Discover event schemas</h3>
+<p>Events consist of a set of four required string properties. The properties are common to all events from any publisher.</p>
+<p>The data object (=payload) has properties that are specific to each publisher.</p>
+<p>Event sources send events to Azure Event Grid in an array, which can have several event objects. When posting events to an event grid topic, the array can have a total size of up to 1 MB. Each event in the array is limited to 1 MB. If an event or the array is greater than the size limits, you receive the response <code>413 Payload Too Large</code>. Operations are charged in 64 Kb increments though.</p>
+<p>Event Grid sends the events to subscribers in an array that has a single event.</p>
+<h4 id="event-schema">Event schema</h4>
 <p>The following example shows the properties that are used by all event publishers:</p>
 <pre><code>[
   {
@@ -279,7 +257,7 @@ Every subscription has two keys, a primary and a secondary. Having two keys make
   }
 ]
 </code></pre>
-<h2 id="event-properties">Event properties</h2>
+<h4 id="event-properties">Event properties</h4>
 <p>All events have the same following top-level data:</p>
 
 <table>
@@ -295,7 +273,7 @@ Every subscription has two keys, a primary and a secondary. Having two keys make
 <tr>
 <td>topic</td>
 <td>string</td>
-<td>No. If not included, Event Grid will stamp onto the event. If included it must match the event grid topic Azure Resource Manager ID exactly.</td>
+<td>No. If not included, Event Grid will stamp onto the event.</td>
 <td>Full resource path to the event source. This field isn’t writeable. Event Grid provides this value.</td>
 </tr>
 <tr>
@@ -337,16 +315,15 @@ Every subscription has two keys, a primary and a secondary. Having two keys make
 <tr>
 <td>metadataVersion</td>
 <td>string</td>
-<td>No. If not included, Event Grid will stamp onto the event. If included, must match the Event Grid Schema <code>metadataVersion</code> exactly (currently, only <code>1</code>).</td>
+<td>No. If not included, Event Grid will stamp onto the event.</td>
 <td>The schema version of the event metadata. Event Grid defines the schema of the top-level properties. Event Grid provides this value.</td>
 </tr>
 </tbody>
 </table><p>For custom topics, the event publisher determines the data object. The top-level data should have the same fields as standard resource-defined events.</p>
-<p>When publishing events to custom topics, create subjects for your events that make it easy for subscribers to know whether they’re interested in the event. Subscribers use the subject to filter and route events. Consider providing the path for where the event happened, so subscribers can filter by segments of that path. The path enables subscribers to narrowly or broadly filter events. For example, if you provide a three segment path like <code>/A/B/C</code> in the subject, subscribers can filter by the first segment <code>/A</code> to get a broad set of events. Those subscribers get events with subjects like <code>/A/B/C</code> or <code>/A/D/E</code>. Other subscribers can filter by <code>/A/B</code> to get a narrower set of events.</p>
-<p>Sometimes your subject needs more detail about what happened. For example, the <strong>Storage Accounts</strong> publisher provides the subject <code>/blobServices/default/containers/&lt;container-name&gt;/blobs/&lt;file&gt;</code> when a file is added to a container. A subscriber could filter by the path <code>/blobServices/default/containers/testcontainer</code> to get all events for that container but not other containers in the storage account. A subscriber could also filter or route by the suffix <code>.txt</code> to only work with text files.</p>
-<h2 id="cloudevents-v1.0-schema">CloudEvents v1.0 schema</h2>
-<p>In addition to its default event schema, Azure Event Grid natively supports events in the JSON implementation of CloudEvents v1.0 and HTTP protocol binding. CloudEvents is an open specification for describing event data.</p>
-<p>CloudEvents simplifies interoperability by providing a common event schema for publishing, and consuming cloud based events. This schema allows for uniform tooling, standard ways of routing &amp; handling events, and universal ways of deserializing the outer event schema. With a common schema, you can more easily integrate work across platforms.</p>
+<p>When publishing events to custom topics, create subjects for your events that make it easy for subscribers to know whether they’re interested in the event. Subscribers use the subject to filter and route events. Consider providing the path for where the event happened, so subscribers can filter by segments of that path. The path enables subscribers to narrowly or broadly filter events. For example, if you provide a three segment path like <code>/A/B/C</code> in the subject, subscribers can filter by the first segment <code>/A</code> to get a broad set of events. Other subscribers can filter by <code>/A/B</code> to get a narrower set of events.</p>
+<p>Sometimes your subject needs more detail about what happened. For example, the <strong>Storage Accounts</strong> publisher provides the subject <code>/blobServices/default/containers/&lt;container-name&gt;/blobs/&lt;file&gt;</code> when a file is added to a container. A subscriber could filter or route by the suffix <code>.txt</code> to only work with text files.</p>
+<h4 id="cloudevents-v1.0-schema">CloudEvents v1.0 schema</h4>
+<p>In addition to its default event schema, Azure Event Grid natively supports events in the JSON implementation of CloudEvents v1.0 and HTTP protocol binding. CloudEvents is an open specification for describing event data. With a common schema, you can more easily integrate work across platforms.</p>
 <p>Here is an example of an Azure Blob Storage event in CloudEvents format:</p>
 <pre><code>{
     "specversion": "1.0",
@@ -372,20 +349,10 @@ Every subscription has two keys, a primary and a secondary. Having two keys make
     }
 }
 </code></pre>
-<p>A detailed description of the available fields, their types, and definitions in CloudEvents v1.0 is <a href="https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes">available here</a>.</p>
 <p>The headers values for events delivered in the CloudEvents schema and the Event Grid schema are the same except for <code>content-type</code>. For CloudEvents schema, that header value is <code>"content-type":"application/cloudevents+json; charset=utf-8"</code>. For Event Grid schema, that header value is <code>"content-type":"application/json; charset=utf-8"</code>.</p>
-<p>You can use Event Grid for both input and output of events in CloudEvents schema. You can use CloudEvents for system events, like Blob Storage events and IoT Hub events, and custom events. It can also transform those events on the wire back and forth.</p>
-<hr>
-<h2 id="next-unit-explore-event-delivery-durability">Next unit: Explore event delivery durability</h2>
-<p><a href="https://docs.microsoft.com/en-us/training/modules/azure-event-grid/4-event-grid-delivery-retry/">Continue</a></p>
-<h2 id="explore-event-delivery-durability---training--microsoft-docs.md">Explore event delivery durability - Training  Microsoft <a href="http://Docs.md">Docs.md</a></h2>
-<ul>
-<li>3 minutes</li>
-</ul>
-<p>Event Grid provides durable delivery. It tries to deliver each event at least once for each matching subscription immediately. If a subscriber’s endpoint doesn’t acknowledge receipt of an event or if there is a failure, Event Grid retries delivery based on a fixed retry schedule and retry policy. By default, Event Grid delivers one event at a time to the subscriber, and the payload is an array with a single event.</p>
-<p>Note</p>
-<p>Event Grid doesn’t guarantee order for event delivery, so subscribers may receive them out of order.</p>
-<h2 id="retry-schedule">Retry schedule</h2>
+<h3 id="explore-event-delivery-durability">Explore event delivery durability</h3>
+<p>Event Grid provides durable delivery. It tries to deliver each event at least once for each matching subscription immediately.</p>
+<h4 id="retry-schedule">Retry schedule</h4>
 <p>When Event Grid receives an error for an event delivery attempt, EventGrid decides whether it should retry the delivery, dead-letter the event, or drop the event based on the type of the error.</p>
 <p>If the error returned by the subscribed endpoint is a configuration-related error that can’t be fixed with retries (for example, if the endpoint is deleted), EventGrid will either perform dead-lettering on the event or drop the event if dead-letter isn’t configured.</p>
 <p>The following table describes the types of endpoints and errors for which retry doesn’t happen:</p>
@@ -407,9 +374,7 @@ Every subscription has two keys, a primary and a secondary. Having two keys make
 <td>400 Bad Request, 413 Request Entity Too Large, 403 Forbidden, 404 Not Found, 401 Unauthorized</td>
 </tr>
 </tbody>
-</table><p>Important</p>
-<p>If Dead-Letter isn’t configured for an endpoint, events will be dropped when the above errors happen. Consider configuring Dead-Letter if you don’t want these kinds of events to be dropped.</p>
-<p>If the error returned by the subscribed endpoint isn’t among the above list, Event Grid waits 30 seconds for a response after delivering a message. After 30 seconds, if the endpoint hasn’t responded, the message is queued for retry. Event Grid uses an exponential backoff retry policy for event delivery.</p>
+</table><p>If the error returned by the subscribed endpoint isn’t among the above list, Event Grid waits 30 seconds for a response after delivering a message. After 30 seconds, if the endpoint hasn’t responded, the message is queued for retry. Event Grid uses an exponential backoff retry policy for event delivery.</p>
 <p>If the endpoint responds within 3 minutes, Event Grid will attempt to remove the event from the retry queue on a best effort basis but duplicates may still be received. Event Grid adds a small randomization to all retry steps and may opportunistically skip certain retries if an endpoint is consistently unhealthy, down for a long period, or appears to be overwhelmed.</p>
 <h2 id="retry-policy">Retry policy</h2>
 <p>You can customize the retry policy when creating an event subscription by using the following two configurations. An event will be dropped if either of the limits of the retry policy is reached.</p>
